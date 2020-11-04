@@ -1,10 +1,9 @@
 const fs = require('fs')
 
-function cat(fileName) {
+function cat(fileName, done) {
   fs.readFile(`./${fileName}`, 'utf-8', (err, data) => {
-    if (err) throw err;
-    console.log(data);
-    process.stdout.write('\nprompt > ')
+    if (err) done(err);
+    else done(data);
   });
 }
 
